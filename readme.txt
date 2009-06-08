@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: ryelle
-Donate link: http://example.com/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AWJMBLCCVC&lc=US&item_name=redradar%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: quick post, frontend, insert post
 Requires at least: 2.7
 Tested up to: 2.7
