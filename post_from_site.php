@@ -1,38 +1,62 @@
 <?php
 /*
  * Plugin Name: Post From Site
- * Plugin URI: http://www.redradar.net/wp/?p=
- * Description: Add a new post directly from your website - no need to go to the admin side.<br />
+ * Plugin URI: http://www.redradar.net/wp/?p=95
+ * Description: Add a new post directly from your website - no need to go to the admin side.
  * Author: Kelly Dwan
- * Version: 1.6.3
- * Date: 6.3.09
+ * Version: 1.6.20
+ * Date: 6.20.09
  * Author URI: http://www.redradar.net/wp
-*/
-
+ */
+/* * *
+ * TODO:
+ *		Tag support
+ * 		additional media?
+ * SUGGESTIONS:
+ *		BuddyPress
+ *		non-registered users -> captcha and/or automatic pending status
+ * 		horizontal category layout rather than vertical
+ * SEPERATE PLUGINS:
+ * 		simple pulldown login box
+ * 		forked pfs that just does images
+ */
 add_action('wp_head','pfs_includes');
-function pfs_includes(){ 
-	/*ensure jquery exists, perhaps a checkbox in the options? */
-	if (True == get_option('pfs_addjquery')) echo "<script type='text/javascript' src='".dirname(__FILE__)."'></script>"; ?>
-	<script language='javascript' src='<?php bloginfo('url'); ?>/wp-content/plugins/pfs/pfs_display.js'></script> 
-	<link rel="stylesheet" type="text/css" media="screen" href='<?php bloginfo('url'); ?>/wp-content/plugins/pfs/pfs_style.php' />
+function pfs_includes(){
+$path = split('wp',__FILE__,2); ?>
+<!-- CSS/js added by post-from-site plugin -->
+<script language='javascript' src='<?php echo get_bloginfo('url').dirname($path[1]); ?>/pfs_display.js'></script> 
+<link rel="stylesheet" type="text/css" media="screen" href='<?php echo get_bloginfo('url').dirname($path[1]); ?>/pfs_style.php' />
 <?php } ?>
-<?php function post_from_site(){
+<?php 
+/* * *
+ * Creates link and postbox (initially hidden with display:none), calls pfs_submit on form-submission.
+ * @param string $cat Category ID for posting specifically to one category. Default is '', which allows user to choose from allowed categories.
+ * @param string $linktext Link text for post link. Default is set in admin settings, any text here will override that. 
+ */
+function post_from_site($cat = '', $linktext = ''){
+	if (''==$linktext) $linktext = get_option('pfs_linktext');
 	// Javascript displays the box when the link is clicked 
-	echo "<a id='postlink' onclick='pfsopen()'>".get_option('pfs_linktext')."</a><span id='pfs_proc'></span>"; ?>
+	echo "<a id='postlink' onclick='pfsopen()'>$linktext</a><span id='pfs_proc'></span>"; ?>
 	<div id="pfs_postbox" style="display:none">
 		<div id="closex"><a onclick="javascript:pfsclose()">x</a></div>
-		<form class="pfs" id="pfs_form" method="post" action="<?php echo ''; ?>" enctype="multipart/form-data">
+		<form class="pfs" id="pfs_form" method="post" action="<?php echo ''; ?>" enctype='multipart/form-data'>
 		<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo get_option('pfs_maxfilesize');?>" />
 		<center><h4>Title:</h4> <input name="title" id="pfs_title" value="" size="50" /></center>
 		<textarea id="postcontent" name="postcontent" rows="20" cols="50"></textarea><br />
 		<?php if (True == get_option('pfs_allowimg')) echo "Image: <input type='file' name='image' id='pfs_image' size='50'>"; ?>
 		<div id="pfs_catchecks">
-		<h4>Categories:</h4><br />
-		<?php $cat = get_option('pfs_excats');
-		$categories = wp_dropdown_categories("exclude=$cat&echo=0&hide_empty=0");
-		preg_match_all('/\s*<option class="(\S*)" value="(\S*)">(.*)<\/option>\s*/', $categories, $matches, PREG_SET_ORDER);
-		foreach ($matches as $match)
-			echo '<input type="checkbox" name="cats[]" value="'.$match[2].'" class="'.$match[1].'" id="'.$match[1].$match[2].'" /><label for="'.$match[1].$match[2].'">'.$match[3].'</label><br />';
+		<?php 
+		if (''==$cat){
+			echo "<h4>Categories:</h4><br />";
+			$excats = get_option('pfs_excats');
+			$categories = wp_dropdown_categories("exclude=$excats&echo=0&hide_empty=0");
+			preg_match_all('/\s*<option class="(\S*)" value="(\S*)">(.*)<\/option>\s*/', $categories, $matches, PREG_SET_ORDER);
+			foreach ($matches as $match)
+				echo '<input type="checkbox" name="cats[]" value="'.$match[2].'" class="'.$match[1].'" id="'.$match[1].$match[2].'" /><label for="'.$match[1].$match[2].'">'.$match[3].'</label><br />';
+		} else {
+			echo "<h4>Posting to ".get_cat_name($cat)."</h4><br />";
+			echo "<input type='hidden' name='cats[]' value='$cat' />";
+		}
 		?>
 		</div>
 		<input type="hidden" name="page" value="<?php get_option(''); ?>" />
@@ -47,33 +71,25 @@ function pfs_includes(){
 	} 
 }
 ?>
-<?php function pfs_submit($pfs_data){
+<?php 
+/* * *
+ * Processed form data into a proper post array, uses wp_insert_post() to add post. Also uses variables defined in the admin settings.
+ * @param array $pfs_data POSTed array of data from the form
+ */
+function pfs_submit($pfs_data){
 	foreach($pfs_data as $key=>$value) ${$key} = $value;
 	echo "<script language=javascript>document.getElementById('pfs_proc').innerHTML='processing...'</script>";
-	$msg = '';
 	if (is_user_logged_in()) { 
 		/* play with the image */
-		(preg_match("/(\.gif$|\.png$|\.jpg$|\.jpeg$)/",$_FILES['image']['name'])) ? $imgAllowed = 1 : $imgAllowed = ($_FILES['image']['name']=='');
-		if (!(empty($_FILES['image']['name'])) && $imgAllowed) {
-			$image = $_FILES['image'];
-			if (move_uploaded_file($image['tmp_name'], $image['name'])){
-				$msg .= "";
+		if(''!=$_FILES['image']['tmp_name']){
+			(getimagesize($_FILES['image']['tmp_name'])) ? $imgAllowed = 1 : $imgAllowed = (''==$_FILES['image']['name']);
+		}
+		if ($imgAllowed && (''!=$_FILES['image']['tmp_name'])){
+			$upload = wp_upload_bits($_FILES["image"]["name"], null, file_get_contents($_FILES["image"]["tmp_name"]));
+			if (False === $upload['error']){
+				$success = True;
 			} else {
-				$msg .= "<div id=\"alert\">There was an error uploading the image: ";
-				switch($image['error']){
-					case 1:
-					case 2:
-						$msg .= "Filesize too large. ";
-						break;
-					case 3:
-						$msg .= "Upload was interrupted. ";
-						break;
-					case 4:
-						$msg .= "No file was uploaded. ";
-						break;
-				}
-				$msg .= "</div><br />";
-				echo $msg;
+				echo "<div id=\"alert\">There was an error uploading the image: {$upload['error']}</div><br />";
 				return;
 			}
 		} 
@@ -84,7 +100,7 @@ function pfs_includes(){
 				get_currentuserinfo();
 				$title = $pfs_data['title'];
 				$content = $pfs_data['postcontent'];
-				($image['name']!='')?$content .= "<br /><img src='{$image['name']}' class='postimg' />":'';
+				($success)?$content .= "<br /><img src='{$upload['url']}' class='postimg' />":'';
 				$categories = $pfs_data['cats'];
 				$postarr = array();
 				$postarr['post_title'] = $title;
@@ -104,7 +120,7 @@ function pfs_includes(){
 	} else {
 		echo "<div id=\"alert\">You need to be logged in to post. <a href='http://www.redradar.net/wp/wp-login.php?redirect_to=$page'>Log in</a></div><br />";
 	}
-	echo "<script language=javascript>document.getElementById('pfs_proc').innerHTML=''</script>";
+	echo "<script language=javascript>document.getElementById('pfs_proc').innerHTML='';</script>";
 	return;
 } 
 ?>
@@ -125,7 +141,11 @@ function show_pfs_settings() {
 	add_option('pfs_textcolor', 'black');
 	add_option('pfs_customcss', '');
 }?>
-<?php function pfs_settings() { ?>
+<?php
+/* * *
+ * What to display in the admin menu
+ */
+function pfs_settings() { ?>
 <script language="Javascript">
 function filesize_bytes() {
 	document.getElementById('pfs_mfs').value = document.getElementById('pfs_mfs').value.toUpperCase();
@@ -147,15 +167,19 @@ function filesize_bytes() {
 		document.getElementById('pfs_mfsHidden').value = size;
 	}
 }
+function genCode(){
+	if (document.getElementById("cat").value == ''){cat = "''";} else {cat=document.getElementById("cat").value;}
+	document.getElementById('gendCode').innerHTML = "&lt;?php if (function_exists('post_from_site')) {post_from_site("+cat+",'"+document.getElementById('pfs_indlinktxt').value+"');} ?&gt;";
+}
 </script>
 <style type='text/css'>
-.pfs th{
+.pfs th {
 	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
 	font-size:12pt;
 	font-style:italic;
 	font-weight:bold;
 }
-.pfs td{
+.pfs td {
 	font-size:10pt;
 }
 </style>
@@ -169,8 +193,7 @@ function filesize_bytes() {
 				<tr><td>What text do you want do display as the link text?</td><td><input type='text' name='pfs_linktext' value='<?php echo get_option('pfs_linktext');?>' /></td></tr>
 				<tr><th colspan='2'>User Permissions</th></tr>
 				<tr><td>What categories can't quickpost users post to (ie, which to exclude)? <small>comma seperated values, please.</small></td><td><input type='text' name='pfs_excats' value='<?php echo get_option('pfs_excats');?>' /></td><td>Default: none</td></tr>
-				<tr><td>Allow users to upload an image (will be attached to end of post)?</td><td><select name='pfs_allowimg'><option value='1' <?php echo (get_option('pfs_allowimg'))?'selected':'';?>>Yes</option><option value='0' <?php echo (get_option('pfs_allowimg'))?'':'selected';?>>No</option></select></td><td>Default: No [note: still not perfected as of v0.6.2]</td></tr>
-				<tr><td>Where to upload the images?</td><td><input type='text' name='pfs_imagedir' value='<?php echo get_option('pfs_imagedir');?>' /></td></tr>
+				<tr><td>Allow users to upload an image (will be attached to end of post)?</td><td><select name='pfs_allowimg'><option value='1' <?php echo (get_option('pfs_allowimg'))?'selected':'';?>>Yes</option><option value='0' <?php echo (get_option('pfs_allowimg'))?'':'selected';?>>No</option></select></td><td>Note: Images automatically uploaded to 'uploads' directory of wp-content -- just like uploading through the write-post/write-page pages.</td></tr>
 				<tr><td>Maximum file size for uploaded images?</td><td><input type='text' id='pfs_mfs' onblur='javascript:filesize_bytes()' value='<?php echo display_filesize(get_option('pfs_maxfilesize'));?>' /></td><td>Default: 30MB</td></tr>
 				<input type="hidden" id='pfs_mfsHidden' name='pfs_maxfilesize' value='' />
 				<tr><td>Post status? (set to draft or pending if you don't want these posts seen before approval)</td><td><select name='pfs_post_status'>
@@ -202,11 +225,18 @@ function filesize_bytes() {
 		<h2>Installation</h2>
 		<p>Add the following code wherever you want the link to appear in your theme.</p>
 		<p><code>&lt;?php if (function_exists('post_from_site')) {post_from_site();} ?&gt;</code></p>
-
+		<p>To generate individual links to specific category posts: <small>(like, 'click here to post in the general category')</small></p> 
+		<p>Category: <select id="cat" class="postform"><?php 
+			$categories = wp_dropdown_categories("echo=0&hide_empty=0");
+			preg_match_all('/\s*<option class="(\S*)" value="(\S*)">(.*)<\/option>\s*/', $categories, $matches, PREG_SET_ORDER);
+			echo "<option class='{$matches[0][1]}' value=''></option>";
+			foreach ($matches as $match) echo $match[0]; 
+		?></select> &nbsp; Link Text: <input type="text" id="pfs_indlinktxt" /> &nbsp; <input type="submit" value="generate code" onclick="javascript:genCode();"/></p>
+		<p><code id="gendCode"></code></p>
 	</div>
 <?php } ?>
 <?php
-/*
+/* * *
  * A few useful housekeeping-type functions
  */
 function display_filesize($filesize){
