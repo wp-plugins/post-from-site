@@ -6,7 +6,7 @@ Requires at least: 2.7
 Tested up to: 2.8
 Stable tag: 1.6.20
 
-This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! **If you're using v1.6.20, you should **
+This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! **If you're using v1.6.20, and it's not working, you should upgrade now**
 
 == Description ==
 
