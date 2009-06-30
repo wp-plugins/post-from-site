@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AW
 Tags: quick post, frontend, insert post, post
 Requires at least: 2.7
 Tested up to: 2.8
-Stable tag: 1.6.20
+Stable tag: 1.6.21
 
 This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! **If you're using v1.6.20, and it's not working, you should upgrade now**
 
