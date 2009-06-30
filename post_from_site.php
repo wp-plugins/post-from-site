@@ -22,10 +22,10 @@
  */
 add_action('wp_head','pfs_includes');
 function pfs_includes(){
-$path = split('wp',__FILE__,2); ?>
+$path = split('wp-content',__FILE__,2); ?>
 <!-- CSS/js added by post-from-site plugin -->
-<script language='javascript' src='<?php echo get_bloginfo('url').dirname($path[1]); ?>/pfs_display.js'></script> 
-<link rel="stylesheet" type="text/css" media="screen" href='<?php echo get_bloginfo('url').dirname($path[1]); ?>/pfs_style.php' />
+<script language='javascript' src='<?php echo get_bloginfo('url').'/wp-content'.dirname($path[1]); ?>/pfs_display.js'></script> 
+<link rel="stylesheet" type="text/css" media="screen" href='<?php echo get_bloginfo('url').'/wp-content'.dirname($path[1]); ?>/pfs_style.php' />
 <?php } ?>
 <?php 
 /* * *
