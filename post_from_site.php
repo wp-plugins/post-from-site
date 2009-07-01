@@ -4,8 +4,8 @@
  * Plugin URI: http://www.redradar.net/wp/?p=95
  * Description: Add a new post directly from your website - no need to go to the admin side.
  * Author: Kelly Dwan
- * Version: 1.6.20
- * Date: 6.20.09
+ * Version: 1.6.21
+ * Date: 6.29.09
  * Author URI: http://www.redradar.net/wp
  */
 /* * *
