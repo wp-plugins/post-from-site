@@ -1,20 +1,20 @@
 === Plugin Name ===
 Contributors: ryelle
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AWJMBLCCVC&lc=US&item_name=redradar%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
-Tags: quick post, frontend, insert post, post
+Tags: quick post, frontend, insert post, post, Post
 Requires at least: 2.7
-Tested up to: 2.8
-Stable tag: 1.6.21
+Tested up to: 2.9
+Stable tag: 1.9.0
 
-This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! **If you're using v1.6.20, and it's not working, you should upgrade now**
+This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update, or if you just don't want to deal with the backend.
 
 == Description ==
 
-This new wordpress plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! Also useful if you have multiple users and don’t need them to see the admin side of things. It creates a link on your website which, when clicked, will bring up a simple text-box. You can enter a post title, content, and add categories (more features in the works, such as media support).  
+This new wordpress plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! Also useful if you have multiple users and don’t need them to see the admin side of things. It creates a link on your website which, when clicked, will bring up a simple text-box. You can enter a post title, content, and add categories and tags, even upload an image.
 
 On the admin side, there is a settings page where you can edit the plugin to your preferences. You can customize the link text, post-box background color, title/text color, and even add your own CSS to tailor pfs to your site.
 
-As for permissions, you can limit the categories pfs can post to and allow/disallow uploading of images. If you’d rather have pfs’s posts approved before they are visible, you can set the post status to ‘pending’ or ‘draft’. Same with the comment status, it can default to ‘open’ (allowing comments) or ‘closed’ (not allowing comments).
+As for permissions, you can limit the categories pfs can post to and allow/disallow uploading of images (among other things). If you'd rather have pfs's posts approved before they are visible, you can set the post status to ‘pending’ or ‘draft’. Same with the comment status, it can default to ‘open’ (allowing comments) or ‘closed’ (not allowing comments).
 
 == Installation ==
 
@@ -23,13 +23,29 @@ As for permissions, you can limit the categories pfs can post to and allow/disal
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Place `<?php if (function_exists('post_from_site')) {post_from_site();} ?>` in your templates where you want to see the link.
 
+== Changelog ==
+1.9.0 
+* fixes double posting; 
+* better image support; 
+* introduction of '[!--image--]' tag; 
+* existing category/tag dropdown with multiple selection;  
+* ability to create new categories/tags;  
+* other minor adjustments
+
+1.7.0
+* addition of tags 
+* bugfixes
+
+1.6.x
+* Initial releases
+
 == Frequently Asked Questions ==
 
 1. The pop-up won't pop-up! (aka there is a link, but clicking it does nothing.)
 
 Check that you have the javascript and css files in the plugin's folder (`post-from-site`). A problem with the first version of this plugin was that the plugin was looking for the files in the wrong directory. This *should* be fixed with the newest version, so definitely let me know if this is still happening.
 
-[ask a question?](http://www.redradar.net/wp/?p=95)?
+[ask a question](http://www.redradar.net/wp/?p=95)?
 
 == Screenshots ==
 

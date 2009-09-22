@@ -8,10 +8,10 @@ $stylevars = Array('pfs_titlecolor','pfs_textcolor','pfs_bgcolor','pfs_bgimg');
 foreach($stylevars as $var)	${$var}=get_option($var);
 ?>
 
-#pfs_postbox{
+.pfs_postbox{
 	position:absolute !important; 
 	top: 200px;
-	left: 200px;
+	left: 350px;
 	z-index: 100000;
 	width:600px;
 	margin:auto;
@@ -25,51 +25,55 @@ foreach($stylevars as $var)	${$var}=get_option($var);
 	font-family:'Trebuchet MS',sans-serif;
 	font-size:9pt;
 }
-#pfs_postbox #closex {
+.pfs_postbox #closex {
 	float:right;
 	margin:0;
 	margin-top:-50px;
 	padding:0;
 }
-#pfs_postbox #closex a {
+.pfs_postbox #closex a {
 	padding:2px 5px;
 	text-decoration:none;
 	font-size:14px;
 	color:#EEE;
 	background-color:#BBB;
 }
-#pfs_postbox #closex a:hover {
+.pfs_postbox #closex a:hover {
 	background-color:#AAA;
 }
-#pfs_postbox textarea {
+.pfs_postbox textarea {
 	width:550px;
 	margin:5px 25px;
 }
-#pfs_postbox #pfs_span {
+.pfs_postbox #pfs_span {
 	padding:7px 0;
 	float:left;
 }
-#pfs_postbox #submit {
+.pfs_postbox #submit {
 	float:right;
 	padding:7px 25px;
 }
-#pfs_postbox h4 {
+.pfs_postbox h4 {
 	display:inline;
 	font-size:130%;
 	<?php echo (''==$pfs_titlecolor)?"":"color:$pfs_titlecolor;"; ?>
 }
-#pfs_catchecks {
-	text-align:left;
+#pfs_catchecks, #pfs_tagchecks {
+	float:left;
+	width:40%;
+	text-align:center;
 	padding:10px;
 	padding-top:0;
 	margin-left:35px;
 }
-#pfs_catchecks h4{
+#pfs_meta h4 {
+	margin-bottom:0;
 	margin-left:-35px;
+	display:block;
+	text-align:left;
 }
-#pfs_catchecks input, #pfs_catchecks label {
+#pfs_meta input, #pfs_meta label {
 	margin:0;
-	padding:7px;
 	margin-top:5px;
 }
 #alert{
