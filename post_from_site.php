@@ -161,7 +161,7 @@ function show_pfs_settings() {
 	add_option('pfs_post_status', 'publish');
 	add_option('pfs_comment_status', 'open');
 	add_option('pfs_imgdir', dirname(__FILE__));
-	add_option('pfs_maxfilsize', 30000);
+	add_option('pfs_maxfilsize', '30MB');
 	add_option('pfs_bgcolor', '#EDF0CF');
 	add_option('pfs_bgimg', 'pfs_title.png');
 	add_option('pfs_titlecolor', '');
