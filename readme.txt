@@ -14,7 +14,7 @@ This new wordpress plugin allows you to post straight from your front-end (i.e. 
 
 On the admin side, there is a settings page where you can edit the plugin to your preferences. You can customize the link text, post-box background color, title/text color, and even add your own CSS to tailor pfs to your site.
 
-As for permissions, you can limit the categories pfs can post to and allow/disallow uploading of images (among other things). If you'd rather have pfs's posts approved before they are visible, you can set the post status to ‘pending’ or ‘draft’. Same with the comment status, it can default to ‘open’ (allowing comments) or ‘closed’ (not allowing comments).
+As for permissions, you can limit the categories pfs can post to and allow/disallow uploading of images. If you'd rather have pfs's posts approved before they are visible, you can set the post status to ‘pending’ or ‘draft’. Same with the comment status, it can default to ‘open’ (allowing comments) or ‘closed’ (not allowing comments).
 
 == Installation ==
 
@@ -45,7 +45,7 @@ As for permissions, you can limit the categories pfs can post to and allow/disal
 
 Check that you have the javascript and css files in the plugin's folder (`post-from-site`). A problem with the first version of this plugin was that the plugin was looking for the files in the wrong directory. This *should* be fixed with the newest version, so definitely let me know if this is still happening.
 
-[ask a question](http://www.redradar.net/2009/06/unveiling-post-from-site/)?
+[ask a question](http://www.redradar.net/wp/?p=95)?
 
 == Screenshots ==
 
