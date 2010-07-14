@@ -1,8 +1,0 @@
-TODO:
-
-Translate JS? How?
-Add shortcode [http://codex.wordpress.org/Shortcode_API] to allow pfs to be included on a page
-Make a widget? Would this be popular?
-Integrate with WP Gallery somehow - spent a while on this last summer and didn't get it to succeed. Look at Leah's recced FTP gallery plugin.
-Buddypress?
-Multi-site 3.0?
