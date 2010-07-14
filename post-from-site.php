@@ -4,7 +4,7 @@
  * Plugin URI: http://redradar.net/2009/06/unveiling-post-from-site/
  * Description: Add a new post directly from your website - no need to go to the admin side.
  * Author: Kelly Dwan
- * Version: 2.0.1
+ * Version: 2.0.0
  * Date: 07.09.10
  * Author URI: http://www.redradar.net/
  */
