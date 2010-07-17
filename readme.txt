@@ -4,13 +4,13 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AW
 Tags: quick post, frontend, insert post, post, Post
 Requires at least: 2.7
 Tested up to: 3.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 
 This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update, or if you just don't want to deal with the backend.
 
 == Description ==
 
-New version 2.0.0 compatible with 3.0!
+New version 2.0.1 compatible with 3.0! 2.0.1 corrects an error from 2.0.0.
 
 This new wordpress plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! Also useful if you have multiple users and don’t need them to see the admin side of things. It creates a link on your website which, when clicked, will bring up a simple text-box. Users can enter a post title (required), content (also required), add categories and tags (including created new ones), and upload images. Images can be placed in your post with custom tags (`[!--image1--]`), or all appended to the end of the post.
 
