@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Post From Site
- * Plugin URI: http://redradar.net/2009/06/unveiling-post-from-site/
+* Plugin URI: http://redradar.net/2010/07/post-from-site-v2-0-1/
  * Description: Add a new post directly from your website - no need to go to the admin side.
  * Author: Kelly Dwan
  * Version: 2.0.0
