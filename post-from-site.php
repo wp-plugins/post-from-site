@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Post From Site
- * Plugin URI: http://redradar.net/2009/06/unveiling-post-from-site/
+ * Plugin URI: http://redradar.net/2010/07/post-from-site-v2-0-1/
  * Description: Add a new post directly from your website - no need to go to the admin side.
  * Author: Kelly Dwan
  * Version: 2.0.0
@@ -52,7 +52,7 @@ function pfs_validate($input) {
 function pfs_includes(){
     wp_enqueue_script( 'jquery-multi-upload', plugins_url("jquery.MultiFile.pack.js",__FILE__), array('jquery','jquery-form') );
     wp_enqueue_script( 'pfs-script', plugins_url("pfs-script.js",__FILE__) );
-    wp_enqueue_style( 'pfs-style',  plugins_url("pfs-style.php",__FILE__) );
+    wp_enqueue_style( 'pfs-style',  plugins_url("pfs-style.css",__FILE__) );
 } add_action('get_header','pfs_includes');
 
 

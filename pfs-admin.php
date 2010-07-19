@@ -38,7 +38,8 @@ function pfs_settings() { ?>
 	<style type='text/css'>
 	.pfs th {
 		font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
-		font-size:12pt;		font-style:italic;
+		font-size:12pt;
+		font-style:italic;
 		font-weight:bold;
 	}
 	.pfs td {
