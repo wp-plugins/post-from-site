@@ -8,11 +8,15 @@
  * Date: 07.09.10
  * Author URI: http://www.redradar.net/
  */
-
+error_reporting(-1);
+if (!ini_get('display_errors')) {
+    ini_set('display_errors', 1);
+}
 /* We need the admin functions to use wp_create_category(). */
 require_once(ABSPATH . 'wp-admin' . "/includes/admin.php");
 require_once('pfs-admin.php');
 require_once('pfs-form.php');
+require_once('pfs-widget.php');
 
 /**
  * Add text domain to enable localization.
@@ -52,7 +56,7 @@ function pfs_validate($input) {
 function pfs_includes(){
     wp_enqueue_script( 'jquery-multi-upload', plugins_url("jquery.MultiFile.pack.js",__FILE__), array('jquery','jquery-form') );
     wp_enqueue_script( 'pfs-script', plugins_url("pfs-script.js",__FILE__) );
-    wp_enqueue_style( 'pfs-style',  plugins_url("pfs-style.css",__FILE__) );
+    wp_enqueue_style( 'pfs-style',  plugins_url("pfs-style.php",__FILE__) );
 } add_action('get_header','pfs_includes');
 
 
@@ -113,9 +117,3 @@ function filesize_bytes($filesize){
     }
     return $size;
 }
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 <?php
 header('Content-type: text/css');
-require('../../../wp-blog-header.php');
+require('../../../wp-load.php');
 
 echo "/* CSS generated for the Post-From-Site plugin. Defaults can be edited through settings page in Wordpress. */\n\n";
 $stylevars = Array('pfs_titlecolor','pfs_textcolor','pfs_bgcolor','pfs_bgimg');

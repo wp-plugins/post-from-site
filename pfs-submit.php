@@ -4,8 +4,7 @@
  * 
  * @param array $pfs_data POSTed array of data from the form
  */
-require('../../../wp-blog-header.php');
-//get_header();
+require('../../../wp-load.php');
 
 /**
  * Create post from form data, including uploading images

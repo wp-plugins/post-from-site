@@ -11,7 +11,7 @@ function post_from_site($cat = '', $linktext = ''){
 	$idtext = $cat.preg_replace('/[^A-Za-z0-9]/','',$linktext);
 	$linktext = htmlspecialchars(htmlspecialchars_decode(strip_tags($linktext)));
 	// Javascript displays the box when the link is clicked 
-	echo "<div class='pfs-post-link' id='$idtext-link'>$linktext</div>"; ?>
+	echo "<a href='#' class='pfs-post-link' id='$idtext-link'>$linktext</a>"; ?>
 	<div class="pfs-post-box" id="pfs-post-box-<?php echo "$idtext"; ?>" style="display:none" class="pfs_postbox">
 		<div id="closex">x</div>
 		<div id="pfs-alert" style='display:none;'></div>
