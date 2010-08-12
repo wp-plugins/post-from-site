@@ -8,10 +8,7 @@
  * Date: 07.09.10
  * Author URI: http://www.redradar.net/
  */
-error_reporting(-1);
-if (!ini_get('display_errors')) {
-    ini_set('display_errors', 1);
-}
+
 /* We need the admin functions to use wp_create_category(). */
 require_once(ABSPATH . 'wp-admin' . "/includes/admin.php");
 require_once('pfs-admin.php');
