@@ -4,13 +4,13 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AW
 Tags: quick post, frontend, insert post, post, Post
 Requires at least: 2.7
 Tested up to: 3.0
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update, or if you just don't want to deal with the backend.
 
 == Description ==
 
-New version 2.0.1 compatible with 3.0! 2.0.1 corrects an error from 2.0.0.
+Versions 2.0.1+ are compatible with 3.0! 2.0.1 corrects an error from 2.0.0, which caused a conflict with 3.0. Newer versions are compatible with previous versions of WordPress, though you should be using 3.0.
 
 This new wordpress plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! Also useful if you have multiple users and don’t need them to see the admin side of things. It creates a link on your website which, when clicked, will bring up a simple text-box. Users can enter a post title (required), content (also required), add categories and tags (including created new ones), and upload images. Images can be placed in your post with custom tags (`[!--image1--]`), or all appended to the end of the post.
 
@@ -24,27 +24,52 @@ On the admin side, there is a settings page where you can edit the plugin to you
 1. Place `<?php if (function_exists('post_from_site')) {post_from_site();} ?>` in your templates where you want to see the link.
 
 == Changelog ==
+2.0.2
+
+* Fixed an issue with headers
+
+* Changed the `div` tag back to an `a` tag.
+
+2.0.1
+
+* Compatibility with 3.0
+
 2.0.0
+
 * scrapped a lot of code, most of it never made a release
+
 * moved over to strictly using jQuery
+
 * multiple file upload support
+
 * submits using ajax, then refreshes page, so you can see you addition immediately
+
 * also gets rid of the double-post if you refresh the page
+
 * default style has been changed
 
 1.9.0 
+
 * fixes double posting; 
+
 * better image support; 
+
 * introduction of '[!--image--]' tag; 
+
 * existing category/tag dropdown with multiple selection;  
+
 * ability to create new categories/tags;  
+
 * other minor adjustments
 
 1.7.0
+
 * addition of tags 
+
 * bugfixes
 
 1.6.x
+
 * Initial releases
 
 == Frequently Asked Questions ==
