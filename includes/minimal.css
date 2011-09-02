@@ -1,0 +1,131 @@
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site ul {
+	width:550px;
+}
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li a,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li a span,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li a strong {
+	color: #555;
+	text-shadow: none;
+}
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li a {
+	display:inline;
+}
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li:hover,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li.hover,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li:hover > a,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li:hover > a span,
+#wpadminbar .quicklinks #wp-admin-bar-post_from_site.menupop ul li:hover > a strong {
+	background:white;
+}
+
+.pfs_postform {
+	display:block;
+	position:absolute;
+}
+.pfs-post-box{
+	background-color:#ddd;
+    border:1px solid #d3d3d3;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    position:absolute;
+    width:600px;
+    z-index:100;
+    padding:20px 20px 10px;
+	font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+    font-size:12px;
+    line-height:18px;
+    font-weight:normal;
+}
+.pfs_postform {
+    color:#522A00;
+}
+.pfs-post-box .closex {
+	position:absolute;
+	top:0;
+	right:0;
+    font-size:25px;
+    line-height:13px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#EEE;
+    text-shadow: 0 1px 3px rgba(204, 204, 204, 0.95);
+    padding:5px;
+    margin:15px;
+    cursor:pointer;
+}
+.pfs-post-box input[type=text], .pfs-post-box textarea {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 4px solid #EEEEEE;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 1px 3px rgba(204, 204, 204, 0.95) inset;
+	padding: 10px;
+	position: relative;
+	text-indent: 80px;
+	width:95%;
+}
+.pfs-post-box input[type=text] {
+   display: block;
+    height: 24px;
+}
+.pfs-post-box textarea {
+	resize: vertical;
+}
+.pfs-post-box label {
+    background: none repeat scroll 0 0 #EEEEEE;
+    box-shadow: 1px 2px 2px rgba(204, 204, 204, 0.8);
+    color: #555555;
+    display: inline-block;
+    font-size: 13px;
+    left: 4px;
+    min-width: 60px;
+    padding: 4px 10px;
+    position: relative;
+    top: 40px;
+    z-index: 1;
+    line-height:2.2em;
+}
+.pfs-post-box input.submit {
+	background: none repeat scroll 0 0 #222222;
+    border: medium none;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: #EEEEEE;
+    cursor: pointer;
+    font-size: 15px;
+    left: 30px;
+    margin: 20px 0;
+    padding: 5px 42px 5px 22px;
+    position: relative;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+#recaptcha_response_field { left:0 !important; }
+
+#alert,.error{
+    border:1px solid red;
+    padding:10px;
+    margin:3px;
+    background-color:#eda9a9;
+    font-weight:normal;
+}
+.clear {clear:both;}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.clearfix {
+	display: inline-block;
+}
+html[xmlns] .clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+
