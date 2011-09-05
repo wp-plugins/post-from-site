@@ -28,8 +28,8 @@ function post_from_site($cat = '', $linktext = ''){
 	$idtext = $cat.preg_replace('/[^A-Za-z0-9]/','',$linktext);
 	$linktext = htmlspecialchars(htmlspecialchars_decode(strip_tags($linktext)));
 	// Javascript displays the box when the link is clicked 
-	echo "<a id='postlink' onclick='pfsopen(\"$idtext\")'>$linktext</a><span id='pfs_proc'></span>"; ?>
-	<div class="pfs_postbox" id="pfs_postbox<?php echo "$idtext"; ?>" style="display:none" class="pfs_postbox">
+	echo "<a id='postlink' onclick='pfsopen(\"$idtext\")'>$linktext</a>"; ?>
+	<div class="pfs_postbox" id="pfs_postbox<?php echo "$idtext"; ?>" style="display:none">
 		<div id="closex"><a onclick="javascript:pfsclose('<?php echo "$idtext"; ?>')">x</a></div>
 		<form class="pfs" id="pfs_form" method="post" action="<?php echo ''; ?>" enctype='multipart/form-data'>
 		<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo get_option('pfs_maxfilesize');?>" />
@@ -144,7 +144,7 @@ function pfs_submit($pfs_data){
 			echo "<div id=\"alert\">You've left either the title or content empty.</div>";
 		}
 	} else {
-		echo "<div id=\"alert\">You need to be logged in to post. <a href=".get_bloginfo('url')."/wp-login.php?redirect_to=$page'>Log in</a></div><br />";
+		echo "<div id=\"alert\">You need to be logged in to post. <a href='".get_bloginfo('wpurl')."/wp-login.php?redirect_to=".get_bloginfo('url')."'>Log in</a></div><br />";
 	}
 	return;
 } 
