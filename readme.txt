@@ -1,18 +1,3 @@
-pfs_display_start
-pfs_$idtext_display_start
-pfs_form_start
-pfs_$idtext_form_start
-pfs_form_pre_submit
-pfs_$idtext_form_pre_submit
-pfs_form_end
-pfs_$idtext_form_end
-pfs_display_end
-pfs_$idtext_display_end
-
-$idtext = $cat.preg_replace('/[^A-Za-z0-9]/','',$linktext);
-
-added shortcode support [post-from-site cat='' link='']
-
 === Plugin Name ===
 Contributors: ryelle
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AWJMBLCCVC&lc=US&item_name=redradar%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
