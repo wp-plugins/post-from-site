@@ -1,4 +1,7 @@
 <?php
+// register PfsWidget widget
+add_action('widgets_init', create_function('', 'return register_widget("PfsWidget");'));
+
 /**
  * Post From Site extends the widget class to create widget.
  */
@@ -18,7 +21,7 @@ class PfsWidget extends WP_Widget {
         echo $before_widget;
         if ( $title ) echo $before_title . $title . $after_title;
         echo "<ul><li>";
-        $pfs = new PostFromSite($category,$link,$popup);
+        $pfs = new PostFromSite(0,$link,$popup,$category);
         $pfs->form();
         echo "</li></ul>";
         echo $after_widget;
@@ -35,11 +38,18 @@ class PfsWidget extends WP_Widget {
     }
 
     /** @see WP_Widget::form */
-    function form($instance) {				
-        $title = esc_attr($instance['title']);
-        $category = esc_attr($instance['category']);
-        $link = esc_attr($instance['link']);
-        $popup = $instance['popup'];
+    function form($instance) {
+	    if ( $instance ) {
+			$title = esc_attr($instance['title']);
+			$category = esc_attr($instance['category']);
+			$link = esc_attr($instance['link']);
+			$popup = $instance['popup'];
+	    } else {
+	    	$title = '';
+	    	$category = '';
+	    	$link = '';
+	    	$popup = 0;
+	    }
         ?>
         <p><label for="<?php echo $this->get_field_id('title'); ?>">
             <?php _e('Title:'); ?>
@@ -69,8 +79,4 @@ class PfsWidget extends WP_Widget {
         </label></p>
     <?php }
 } // class PfsWidget
-
-
-// register PfsWidget widget
-add_action('widgets_init', create_function('', 'return register_widget("PfsWidget");'));
 ?>
