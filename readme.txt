@@ -78,4 +78,4 @@ Check that you have the javascript and css files in the plugin's folder (`post-f
 
 == Screenshots ==
 
-1. Post-from-site in action, using 'twentyeleven' theme
+1. Post From Site in action (default 'twentyeleven' theme): inserted onto a sticky post using the shortcode.
