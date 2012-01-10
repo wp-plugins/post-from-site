@@ -1,98 +1,81 @@
 === Plugin Name ===
 Contributors: ryelle
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AWJMBLCCVC&lc=US&item_name=redradar%2enet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
-Tags: quick post, frontend, insert post, post, Post
-Requires at least: 2.8
-Tested up to: 3.1
+Tags: quick post, frontend, insert post, post, Post, custom post type
+Requires at least: 3.2
+Tested up to: 3.3.1
 Stable tag: 2.0.3
 
-This plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update, or if you just don't want to deal with the backend.
+Write a post without leaving your site!
 
 == Description ==
 
-Versions 2.0.1+ are compatible with 3.0! 2.0.1 corrects an error from 2.0.0, which caused a conflict with 3.0. Newer versions are compatible with previous versions of WordPress, though you should be using 3.0.
+Add an interface on your site to write a post (or page, or anything), without having to go into the admin section. Also allows for 'anonymous' posting (not logged in users, still asks for name/email) with a recaptcha. This makes Post From Site a perfect plugin for your user reviews, a suggestion box, or even a very basic forum site. 
 
-This new wordpress plugin allows you to post straight from your front-end (i.e. website) - perfect for a quick update! Also useful if you have multiple users and don’t need them to see the admin side of things. It creates a link on your website which, when clicked, will bring up a simple text-box. Users can enter a post title (required), content (also required), add categories and tags (including created new ones), and upload images. Images can be placed in your post with custom tags (`[!--image1--]`), or all appended to the end of the post.
-
-On the admin side, there is a settings page where you can edit the plugin to your preferences. You can customize the link text, post-box background color, title/text color, and even add your own CSS to tailor pfs to your site. As for permissions, you can limit the categories pfs can post to and allow/disallow uploading of images. If you'd rather have pfs's posts approved before they are visible, you can set the post status to ‘pending’ or ‘draft’. Same with the comment status, it can default to ‘open’ (allowing comments) or ‘closed’ (not allowing comments).
+After install, you can display a form on your site via a widget, shortcode, or PHP code in your theme. See [this page for further documentation](http://me.redradar.net/category/plugins/post-from-site/).
 
 == Installation ==
 
 1. Unzip `pfs.zip`
 1. Upload all files to the `/wp-content/plugins/post-from-site` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php if (function_exists('post_from_site')) {post_from_site();} ?>` in your templates where you want to see the link.
+
+= Use your choice of include: =
+1. Add a widget in the [Widgets section](http://codex.wordpress.org/Appearance_Widgets_Screen)
+2. Add a shortcode to a page/post/CPT
+ * Post From Site's basic shortcode is `[post-from-site]`. It has three options: `popup` defines whether the form will show on the site, or only after clicking a link (defaults to false, not a popup). `link` defines that link's text (defaults to 'quick post'). `cat` restricts the post to a specific category (defaults to none).
+3. Add PHP code to your template files. 
+ * `<?php $pfs = new PostFromSite(); $pfs->form(); ?>` will output the form. You can pass the same variables as in the shortcode.
 
 == Changelog ==
-2.1.0
+= 3.0 =
+* Rewrote code (again) into a class.
+* Added Custom Post Type functionality, along with support for all taxonomies.
+* Added widget functionality
+* Added actions and filters to allow extension
+* Images are uploaded correctly to gallery, and included image size is customizable
 
-* Adding widget functionality
+= 2.0.3 =
+* Fixed the call to the non-existent 'pfs-widget.php'.
 
-* Add actions and filters to create an 'API'
-
-2.0.3
-
-* Fixed the call to the non-existant 'pfs-widget.php'.
-
-2.0.2
-
+= 2.0.2 =
 * Fixed an issue with headers
-
 * Changed the `div` tag back to an `a` tag.
 
-2.0.1
-
+= 2.0.1 =
 * Compatibility with 3.0
 
-2.0.0
-
+= 2.0.0 =
 * scrapped a lot of code, most of it never made a release
-
 * moved over to strictly using jQuery
-
 * multiple file upload support
-
 * submits using ajax, then refreshes page, so you can see you addition immediately
-
 * also gets rid of the double-post if you refresh the page
-
 * default style has been changed
 
-1.9.0 
-
+= 1.9.0 =
 * fixes double posting; 
-
 * better image support; 
-
 * introduction of '[!--image--]' tag; 
-
 * existing category/tag dropdown with multiple selection;  
-
 * ability to create new categories/tags;  
-
 * other minor adjustments
 
-1.7.0
-
+= 1.7.0 =
 * addition of tags 
-
 * bugfixes
 
-1.6.x
-
+= 1.6.x =
 * Initial releases
 
 == Frequently Asked Questions ==
 
-This is left over from versions 1.x of the plugin.
-
-1. The pop-up won't pop-up! (aka there is a link, but clicking it does nothing.)
+= The popup won't show up / I'm redirected to a white page on submit =
 
 Check that you have the javascript and css files in the plugin's folder (`post-from-site`). A problem with the first version of this plugin was that the plugin was looking for the files in the wrong directory. For other people it was also a problem with my code assuming a Linux filestructure, so on Windows servers it broke. 2.0.0+ shouldn't have this problem, as I'm using a different method of calling other files.
 
-[ask a question](http://www.redradar.net/wp/?p=95)?
+[ask a question](http://wordpress.org/tags/post-from-site?forum_id=10)?
 
 == Screenshots ==
 
-1. Post-from-site's setting page in admin
-2. Post-from-site in action - *note: you can customize the CSS yourself so it doesn't need to look like the above.*
+1. Post-from-site in action, using 'twentyeleven' theme
