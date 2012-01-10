@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YB5AW
 Tags: quick post, frontend, insert post, post, Post, custom post type
 Requires at least: 3.2
 Tested up to: 3.3.1
-Stable tag: 3.0
+Stable tag: 3.0.1
 
 Write a post without leaving your site!
 
