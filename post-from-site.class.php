@@ -372,7 +372,9 @@ class PostFromSite {
 			$out .= "<label for='postcontent'>". __('Content:','pfs_domain'). "</label><textarea id='postcontent' name='postcontent' rows='12' cols='50'></textarea>\n";
 			if ( array_key_exists('taxonomy',$options) ){
 				foreach ($options['taxonomy'] as $i => $tax){
-					$out .= $this->get_taxonomy_list($tax);
+					//if ($tax != 'category' || empty($cat)){
+						$out .= $this->get_taxonomy_list($tax);
+					//}
 				}
 			}		
 			if ($options['allow_image']) {
@@ -462,4 +464,12 @@ function filesize_bytes($filesize){
         for ($i = 0; $i < $prefix[$match[2]]; $i++) $size *= 1000;
     }
     return $size;
+}
+
+/**
+ * Backwards compatibility
+ */
+function post_from_site($cat = '', $linktext = ''){
+	$pfs = new PostFromSite(0, $linktext, true, $cat);
+	$pfs->form();
 }

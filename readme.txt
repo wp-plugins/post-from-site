@@ -14,6 +14,10 @@ Add an interface on your site to write a post (or page, or anything), without ha
 
 After install, you can display a form on your site via a widget, shortcode, or PHP code in your theme. See [this page for further documentation](http://me.redradar.net/category/plugins/post-from-site/).
 
+== Upgrade Notice ==
+
+If you're updating from 2.0.3 or below, you'll need to resave your settings before it will work correctly (a lot of things were changed in 3.0).
+
 == Installation ==
 
 1. Unzip `pfs.zip`
@@ -28,6 +32,9 @@ After install, you can display a form on your site via a widget, shortcode, or P
  * `<?php $pfs = new PostFromSite(); $pfs->form(); ?>` will output the form. You can pass the same variables as in the shortcode.
 
 == Changelog ==
+= 3.0.1 =
+* Added the post_from_site function back for compatability
+
 = 3.0 =
 * Rewrote code (again) into a class.
 * Added Custom Post Type functionality, along with support for all taxonomies.
