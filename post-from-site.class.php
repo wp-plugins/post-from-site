@@ -4,7 +4,7 @@
  * Plugin URI: http://me.redradar.net/category/plugins/post-from-site/
  * Description: Add a new post/page/{your custom post type} directly from your website.
  * Author: Kelly Dwan
- * Version: 3.0.0
+ * Version: 3.0.1
  * Date: 11.20.11
  * Author URI: http://me.redradar.net/
  */
